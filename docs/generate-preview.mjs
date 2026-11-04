@@ -1,4 +1,4 @@
-// Renders docs/preview.svg from docs/example.json, so the README shows the real
+// Renders docs/diagram-preview.svg from docs/example.json, so the README shows the real
 // output rather than a screenshot that silently goes stale.
 //
 // The standalone export needs the stylesheet inside the file: selectors that are
@@ -35,5 +35,5 @@ const styled = svg
   .replace(/(<svg[^>]*>)/, `$1\n${backdrop}`);
 
 mkdirSync(HERE, { recursive: true });
-writeFileSync(join(HERE, 'preview.svg'), `<?xml version="1.0" encoding="UTF-8"?>\n${styled}\n`, 'utf8');
-console.log(`docs/preview.svg: ${(styled.length / 1024).toFixed(1)} КБ, ${valid.spec.classes.length} классов`);
+writeFileSync(join(HERE, 'diagram-preview.svg'), `<?xml version="1.0" encoding="UTF-8"?>\n${styled}\n`, 'utf8');
+console.log(`docs/diagram-preview.svg: ${(styled.length / 1024).toFixed(1)} КБ, ${valid.spec.classes.length} классов`);

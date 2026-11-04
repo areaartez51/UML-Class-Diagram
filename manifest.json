@@ -1,7 +1,7 @@
 {
   "id": "uml-class-diagram",
   "name": "UML Class Diagram",
-  "version": "0.34.1",
+  "version": "0.35.0",
   "minAppVersion": "1.4.0",
   "description": "Build an interactive UML class diagram from the code in your vault: pick a folder, set flags, generate.",
   "author": "areaartez51",

@@ -1144,12 +1144,12 @@ function membersMarkup(entry, width, offsetY) {
   }
 
   if (groups.length === 0) return '';
-  return `<g class="members" transform="translate(0,${fmt(offsetY)})" hidden>${groups.join('')}</g>`;
+  return `<g class="members" transform="translate(0,${fmt(offsetY)})" hidden="">${groups.join('')}</g>`;
 }
 
 function expanderMarkup(width, offsetY) {
   const cx = width / 2;
-  return `<g class="expander" data-expand-toggle role="button" tabindex="0" aria-expanded="false" transform="translate(0,${fmt(
+  return `<g class="expander" data-expand-toggle="" role="button" tabindex="0" aria-expanded="false" transform="translate(0,${fmt(
     offsetY,
   )})">
     <rect class="expander-bg" width="${fmt(width)}" height="${EXPANDER_H}" rx="0"/>
@@ -1181,7 +1181,7 @@ function pinsMarkup(entry, node, hue, used) {
       </g>`;
     })
     .join('');
-  return `<g class="pins" hidden>${circles}</g>`;
+  return `<g class="pins" hidden="">${circles}</g>`;
 }
 
 function nodeMarkup(entry, node, neighbors, hue, used = new Set(), packageId = '') {
@@ -1207,7 +1207,7 @@ function nodeMarkup(entry, node, neighbors, hue, used = new Set(), packageId = '
     <rect class="box" width="${fmt(width)}" height="${fmt(node.height)}" rx="10"/>
     <rect class="body" x="1" y="${HEADER_H}" width="${fmt(width - 2)}" height="${fmt(
       node.membersHeight,
-    )}" rx="8" hidden/>
+    )}" rx="8" hidden=""/>
     <rect class="stripe" width="5" height="${fmt(node.height)}" rx="2.5"/>
     ${
       stereotype

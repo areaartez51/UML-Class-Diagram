@@ -338,11 +338,11 @@ svg.has-freeze .node.frozen-endpoint .box { stroke-width: 2.2; }
   </g></g>
   <g class="layer-nodes"><g class="node st-class" data-node="order-service" data-name="OrderService" data-pkg="commerce" data-expanded="false" data-neighbors="email-notifier,inventory-repository,order,payment-provider" data-expand-delta="173" data-has-members="1" data-x="394" data-y="84" data-orig-x="394" data-orig-y="84" data-w="444" data-h="76" style="--h:0; --c:hsl(0 68% 56%)" transform="translate(394,84)" role="group" aria-label="OrderService">
     <rect class="box" width="444" height="76" rx="10"/>
-    <rect class="body" x="1" y="56" width="442" height="173" rx="8" hidden/>
+    <rect class="body" x="1" y="56" width="442" height="173" rx="8" hidden=""/>
     <rect class="stripe" width="5" height="76" rx="2.5"/>
     
     <text class="name" x="18" y="36">OrderService</text>
-    <g class="members" transform="translate(0,56)" hidden><g transform="translate(0,10)" data-member-section="fields">
+    <g class="members" transform="translate(0,56)" hidden=""><g transform="translate(0,10)" data-member-section="fields">
       <line class="sep" x1="0" y1="0" x2="444" y2="0"/>
       <text class="section" x="14" y="17">поля</text>
       <g class="member-row" data-member="0">
@@ -370,11 +370,11 @@ svg.has-freeze .node.frozen-endpoint .box { stroke-width: 2.2; }
           <text class="member" x="26" y="54" style="--mix:48%">+ cancel(id: string): void</text>
         </g>
     </g></g>
-    <g class="expander" data-expand-toggle role="button" tabindex="0" aria-expanded="false" transform="translate(0,56)">
+    <g class="expander" data-expand-toggle="" role="button" tabindex="0" aria-expanded="false" transform="translate(0,56)">
     <rect class="expander-bg" width="444" height="20" rx="0"/>
     <path class="chev" d="M 216 8 L 222 13 L 228 8"/>
   </g>
-    <g class="pins" hidden><g class="pin-group" data-node="order-service" data-member="0" data-side="left">
+    <g class="pins" hidden=""><g class="pin-group" data-node="order-service" data-member="0" data-side="left">
         <line class="pin-stem" x1="1" y1="99.5" x2="12" y2="99.5" stroke="hsl(0 62% 58%)"/>
         <circle class="pin" cx="0" cy="99.5" r="4" fill="hsl(0 62% 58%)"/>
       </g>
@@ -384,11 +384,11 @@ svg.has-freeze .node.frozen-endpoint .box { stroke-width: 2.2; }
       </g></g>
   </g><g class="node st-class" data-node="order" data-name="Order" data-pkg="commerce" data-expanded="false" data-neighbors="order-line,order-service" data-expand-delta="156" data-has-members="1" data-x="699" data-y="389" data-orig-x="699" data-orig-y="389" data-w="365" data-h="76" style="--h:137.51; --c:hsl(137.51 68% 56%)" transform="translate(699,389)" role="group" aria-label="Order">
     <rect class="box" width="365" height="76" rx="10"/>
-    <rect class="body" x="1" y="56" width="363" height="156" rx="8" hidden/>
+    <rect class="body" x="1" y="56" width="363" height="156" rx="8" hidden=""/>
     <rect class="stripe" width="5" height="76" rx="2.5"/>
     
     <text class="name" x="18" y="36">Order</text>
-    <g class="members" transform="translate(0,56)" hidden><g transform="translate(0,10)" data-member-section="fields">
+    <g class="members" transform="translate(0,56)" hidden=""><g transform="translate(0,10)" data-member-section="fields">
       <line class="sep" x1="0" y1="0" x2="365" y2="0"/>
       <text class="section" x="14" y="17">поля</text>
       <g class="member-row" data-member="0">
@@ -413,11 +413,11 @@ svg.has-freeze .node.frozen-endpoint .box { stroke-width: 2.2; }
           <text class="member" x="26" y="37" style="--mix:84%">+ addLine(sku: string, qty: number): void</text>
         </g>
     </g></g>
-    <g class="expander" data-expand-toggle role="button" tabindex="0" aria-expanded="false" transform="translate(0,56)">
+    <g class="expander" data-expand-toggle="" role="button" tabindex="0" aria-expanded="false" transform="translate(0,56)">
     <rect class="expander-bg" width="365" height="20" rx="0"/>
     <path class="chev" d="M 176.5 8 L 182.5 13 L 188.5 8"/>
   </g>
-    <g class="pins" hidden><g class="pin-group" data-node="order" data-member="1" data-side="left">
+    <g class="pins" hidden=""><g class="pin-group" data-node="order" data-member="1" data-side="left">
         <line class="pin-stem" x1="1" y1="116.5" x2="12" y2="116.5" stroke="hsl(137.51 62% 63%)"/>
         <circle class="pin" cx="0" cy="116.5" r="4" fill="hsl(137.51 62% 63%)"/>
       </g>
@@ -427,11 +427,11 @@ svg.has-freeze .node.frozen-endpoint .box { stroke-width: 2.2; }
       </g></g>
   </g><g class="node st-class" data-node="order-line" data-name="OrderLine" data-pkg="commerce" data-expanded="false" data-neighbors="order" data-expand-delta="74" data-has-members="1" data-x="531" data-y="677" data-orig-x="531" data-orig-y="677" data-w="170" data-h="76" style="--h:275.02; --c:hsl(275.02 68% 56%)" transform="translate(531,677)" role="group" aria-label="OrderLine">
     <rect class="box" width="170" height="76" rx="10"/>
-    <rect class="body" x="1" y="56" width="168" height="74" rx="8" hidden/>
+    <rect class="body" x="1" y="56" width="168" height="74" rx="8" hidden=""/>
     <rect class="stripe" width="5" height="76" rx="2.5"/>
     
     <text class="name" x="18" y="36">OrderLine</text>
-    <g class="members" transform="translate(0,56)" hidden><g transform="translate(0,10)" data-member-section="fields">
+    <g class="members" transform="translate(0,56)" hidden=""><g transform="translate(0,10)" data-member-section="fields">
       <line class="sep" x1="0" y1="0" x2="170" y2="0"/>
       <text class="section" x="14" y="17">поля</text>
       <g class="member-row" data-member="0">
@@ -442,18 +442,18 @@ svg.has-freeze .node.frozen-endpoint .box { stroke-width: 2.2; }
           <text class="member" x="26" y="54" style="--mix:60%">- qty: number</text>
         </g>
     </g></g>
-    <g class="expander" data-expand-toggle role="button" tabindex="0" aria-expanded="false" transform="translate(0,56)">
+    <g class="expander" data-expand-toggle="" role="button" tabindex="0" aria-expanded="false" transform="translate(0,56)">
     <rect class="expander-bg" width="170" height="20" rx="0"/>
     <path class="chev" d="M 79 8 L 85 13 L 91 8"/>
   </g>
     
   </g><g class="node st-class" data-node="inventory-repository" data-name="InventoryRepository" data-pkg="commerce" data-expanded="false" data-neighbors="order-service" data-expand-delta="57" data-has-members="1" data-x="168" data-y="389" data-orig-x="168" data-orig-y="389" data-w="421" data-h="76" style="--h:52.52; --c:hsl(52.52 68% 56%)" transform="translate(168,389)" role="group" aria-label="InventoryRepository">
     <rect class="box" width="421" height="76" rx="10"/>
-    <rect class="body" x="1" y="56" width="419" height="57" rx="8" hidden/>
+    <rect class="body" x="1" y="56" width="419" height="57" rx="8" hidden=""/>
     <rect class="stripe" width="5" height="76" rx="2.5"/>
     
     <text class="name" x="18" y="36">InventoryRepository</text>
-    <g class="members" transform="translate(0,56)" hidden><g transform="translate(0,10)" data-member-section="methods">
+    <g class="members" transform="translate(0,56)" hidden=""><g transform="translate(0,10)" data-member-section="methods">
       <line class="sep" x1="0" y1="0" x2="421" y2="0"/>
       <text class="section" x="14" y="17">методы</text>
       <g class="member-row" data-member="0">
@@ -461,18 +461,18 @@ svg.has-freeze .node.frozen-endpoint .box { stroke-width: 2.2; }
           <text class="member" x="26" y="37" style="--mix:48%">+ reserve(sku: string, qty: number): Reservation</text>
         </g>
     </g></g>
-    <g class="expander" data-expand-toggle role="button" tabindex="0" aria-expanded="false" transform="translate(0,56)">
+    <g class="expander" data-expand-toggle="" role="button" tabindex="0" aria-expanded="false" transform="translate(0,56)">
     <rect class="expander-bg" width="421" height="20" rx="0"/>
     <path class="chev" d="M 204.5 8 L 210.5 13 L 216.5 8"/>
   </g>
     
   </g><g class="node st-interface" data-node="payment-provider" data-name="PaymentProvider" data-pkg="payments" data-expanded="false" data-neighbors="order-service,payment-gateway,stripe-gateway" data-expand-delta="57" data-has-members="1" data-x="1402" data-y="84" data-orig-x="1402" data-orig-y="84" data-w="389" data-h="76" style="--h:190.03; --c:hsl(190.03 68% 56%)" transform="translate(1402,84)" role="group" aria-label="PaymentProvider">
     <rect class="box" width="389" height="76" rx="10"/>
-    <rect class="body" x="1" y="56" width="387" height="57" rx="8" hidden/>
+    <rect class="body" x="1" y="56" width="387" height="57" rx="8" hidden=""/>
     <rect class="stripe" width="5" height="76" rx="2.5"/>
     <text class="stereo" x="18" y="22">«interface»</text>
     <text class="name" x="18" y="45">PaymentProvider</text>
-    <g class="members" transform="translate(0,56)" hidden><g transform="translate(0,10)" data-member-section="methods">
+    <g class="members" transform="translate(0,56)" hidden=""><g transform="translate(0,10)" data-member-section="methods">
       <line class="sep" x1="0" y1="0" x2="389" y2="0"/>
       <text class="section" x="14" y="17">методы</text>
       <g class="member-row" data-member="0">
@@ -480,18 +480,18 @@ svg.has-freeze .node.frozen-endpoint .box { stroke-width: 2.2; }
           <text class="member" x="26" y="37" style="--mix:48%">+ charge(card: Card, amount: Money): Receipt</text>
         </g>
     </g></g>
-    <g class="expander" data-expand-toggle role="button" tabindex="0" aria-expanded="false" transform="translate(0,56)">
+    <g class="expander" data-expand-toggle="" role="button" tabindex="0" aria-expanded="false" transform="translate(0,56)">
     <rect class="expander-bg" width="389" height="20" rx="0"/>
     <path class="chev" d="M 188.5 8 L 194.5 13 L 200.5 8"/>
   </g>
     
   </g><g class="node st-abstract" data-node="payment-gateway" data-name="PaymentGateway" data-pkg="payments" data-expanded="false" data-neighbors="payment-provider,stripe-gateway" data-expand-delta="156" data-has-members="1" data-x="1402" data-y="273" data-orig-x="1402" data-orig-y="273" data-w="389" data-h="76" style="--h:327.54; --c:hsl(327.54 68% 56%)" transform="translate(1402,273)" role="group" aria-label="PaymentGateway">
     <rect class="box" width="389" height="76" rx="10"/>
-    <rect class="body" x="1" y="56" width="387" height="156" rx="8" hidden/>
+    <rect class="body" x="1" y="56" width="387" height="156" rx="8" hidden=""/>
     <rect class="stripe" width="5" height="76" rx="2.5"/>
     <text class="stereo" x="18" y="22">«abstract»</text>
     <text class="name" x="18" y="45">PaymentGateway</text>
-    <g class="members" transform="translate(0,56)" hidden><g transform="translate(0,10)" data-member-section="fields">
+    <g class="members" transform="translate(0,56)" hidden=""><g transform="translate(0,10)" data-member-section="fields">
       <line class="sep" x1="0" y1="0" x2="389" y2="0"/>
       <text class="section" x="14" y="17">поля</text>
       <g class="member-row" data-member="0">
@@ -516,18 +516,18 @@ svg.has-freeze .node.frozen-endpoint .box { stroke-width: 2.2; }
           <text class="member" x="26" y="54" style="--mix:84%"># authorize(card: Card): Token</text>
         </g>
     </g></g>
-    <g class="expander" data-expand-toggle role="button" tabindex="0" aria-expanded="false" transform="translate(0,56)">
+    <g class="expander" data-expand-toggle="" role="button" tabindex="0" aria-expanded="false" transform="translate(0,56)">
     <rect class="expander-bg" width="389" height="20" rx="0"/>
     <path class="chev" d="M 188.5 8 L 194.5 13 L 200.5 8"/>
   </g>
     
   </g><g class="node st-class" data-node="stripe-gateway" data-name="StripeGateway" data-pkg="payments" data-expanded="false" data-neighbors="payment-gateway,payment-provider" data-expand-delta="98" data-has-members="1" data-x="1402" data-y="561" data-orig-x="1402" data-orig-y="561" data-w="389" data-h="76" style="--h:105.05; --c:hsl(105.05 68% 56%)" transform="translate(1402,561)" role="group" aria-label="StripeGateway">
     <rect class="box" width="389" height="76" rx="10"/>
-    <rect class="body" x="1" y="56" width="387" height="98" rx="8" hidden/>
+    <rect class="body" x="1" y="56" width="387" height="98" rx="8" hidden=""/>
     <rect class="stripe" width="5" height="76" rx="2.5"/>
     
     <text class="name" x="18" y="36">StripeGateway</text>
-    <g class="members" transform="translate(0,56)" hidden><g transform="translate(0,10)" data-member-section="constructors">
+    <g class="members" transform="translate(0,56)" hidden=""><g transform="translate(0,10)" data-member-section="constructors">
       <line class="sep" x1="0" y1="0" x2="389" y2="0"/>
       <text class="section" x="14" y="17">конструкторы</text>
       <g class="member-row" data-member="0">
@@ -542,18 +542,18 @@ svg.has-freeze .node.frozen-endpoint .box { stroke-width: 2.2; }
           <text class="member" x="26" y="37" style="--mix:60%">+ charge(card: Card, amount: Money): Receipt</text>
         </g>
     </g></g>
-    <g class="expander" data-expand-toggle role="button" tabindex="0" aria-expanded="false" transform="translate(0,56)">
+    <g class="expander" data-expand-toggle="" role="button" tabindex="0" aria-expanded="false" transform="translate(0,56)">
     <rect class="expander-bg" width="389" height="20" rx="0"/>
     <path class="chev" d="M 188.5 8 L 194.5 13 L 200.5 8"/>
   </g>
     
   </g><g class="node st-class" data-node="email-notifier" data-name="EmailNotifier" data-pkg="" data-expanded="false" data-neighbors="order-service" data-expand-delta="57" data-has-members="1" data-x="2129" data-y="84" data-orig-x="2129" data-orig-y="84" data-w="302" data-h="76" style="--h:242.56; --c:hsl(242.56 68% 56%)" transform="translate(2129,84)" role="group" aria-label="EmailNotifier">
     <rect class="box" width="302" height="76" rx="10"/>
-    <rect class="body" x="1" y="56" width="300" height="57" rx="8" hidden/>
+    <rect class="body" x="1" y="56" width="300" height="57" rx="8" hidden=""/>
     <rect class="stripe" width="5" height="76" rx="2.5"/>
     
     <text class="name" x="18" y="36">EmailNotifier</text>
-    <g class="members" transform="translate(0,56)" hidden><g transform="translate(0,10)" data-member-section="methods">
+    <g class="members" transform="translate(0,56)" hidden=""><g transform="translate(0,10)" data-member-section="methods">
       <line class="sep" x1="0" y1="0" x2="302" y2="0"/>
       <text class="section" x="14" y="17">методы</text>
       <g class="member-row" data-member="0">
@@ -561,7 +561,7 @@ svg.has-freeze .node.frozen-endpoint .box { stroke-width: 2.2; }
           <text class="member" x="26" y="37" style="--mix:48%">+ sendReceipt(order: Order): void</text>
         </g>
     </g></g>
-    <g class="expander" data-expand-toggle role="button" tabindex="0" aria-expanded="false" transform="translate(0,56)">
+    <g class="expander" data-expand-toggle="" role="button" tabindex="0" aria-expanded="false" transform="translate(0,56)">
     <rect class="expander-bg" width="302" height="20" rx="0"/>
     <path class="chev" d="M 145 8 L 151 13 L 157 8"/>
   </g>

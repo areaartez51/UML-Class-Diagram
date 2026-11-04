@@ -2,7 +2,7 @@
 
 An Obsidian plugin that builds an interactive UML class diagram from the code in your vault: pick a folder, set a few flags, press **Создать** — and the diagram opens in its own tab.
 
-![Preview](docs/preview.svg)
+![Preview](docs/diagram-preview.svg)
 
 Diagrams are interactive: classes expand to show fields and methods, hovering a member highlights its relation, a click pins a relation so you can follow where it goes, and the canvas pans, zooms and rearranges.
 
