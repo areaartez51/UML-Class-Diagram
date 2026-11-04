@@ -1,0 +1,106 @@
+{
+  "schemaVersion": 1,
+  "title": "Модуль оплаты — диаграмма классов",
+  "classes": [
+    {
+      "id": "order-service",
+      "name": "OrderService",
+      "package": "commerce",
+      "fields": ["- repo: OrderRepository", "- clock: Clock"],
+      "constructors": ["+ OrderService(repo: OrderRepository, clock: Clock)"],
+      "methods": ["+ place(order: Order): Receipt", "+ cancel(id: string): void"]
+    },
+    {
+      "id": "order",
+      "name": "Order",
+      "package": "commerce",
+      "fields": ["- id: string", "- lines: OrderLine[]"],
+      "properties": ["+ Total: Money { get; private set; }"],
+      "methods": ["+ addLine(sku: string, qty: number): void"]
+    },
+    {
+      "id": "order-line",
+      "name": "OrderLine",
+      "package": "commerce",
+      "fields": ["- sku: string", "- qty: number"]
+    },
+    {
+      "id": "inventory-repository",
+      "name": "InventoryRepository",
+      "package": "commerce",
+      "methods": ["+ reserve(sku: string, qty: number): Reservation"]
+    },
+    {
+      "id": "payment-provider",
+      "name": "PaymentProvider",
+      "stereotype": "interface",
+      "package": "payments",
+      "methods": ["+ charge(card: Card, amount: Money): Receipt"]
+    },
+    {
+      "id": "payment-gateway",
+      "name": "PaymentGateway",
+      "stereotype": "abstract",
+      "package": "payments",
+      "fields": ["# http: HttpClient"],
+      "constructors": ["# PaymentGateway(http: HttpClient)"],
+      "methods": ["+ charge(card: Card, amount: Money): Receipt", "# authorize(card: Card): Token"]
+    },
+    {
+      "id": "stripe-gateway",
+      "name": "StripeGateway",
+      "package": "payments",
+      "constructors": ["+ StripeGateway(apiKey: string)"],
+      "methods": ["+ charge(card: Card, amount: Money): Receipt"]
+    },
+    {
+      "id": "email-notifier",
+      "name": "EmailNotifier",
+      "methods": ["+ sendReceipt(order: Order): void"]
+    }
+  ],
+  "relations": [
+    { "from": "stripe-gateway", "to": "payment-gateway", "kind": "inheritance" },
+    { "from": "payment-gateway", "to": "payment-provider", "kind": "realization" },
+    { "from": "stripe-gateway", "to": "payment-provider", "kind": "realization" },
+    {
+      "from": "order-service",
+      "to": "payment-provider",
+      "kind": "dependency",
+      "label": "charge(card, amount)"
+    },
+    {
+      "from": "order-service",
+      "to": "inventory-repository",
+      "kind": "dependency",
+      "label": "reserve(sku, qty)"
+    },
+    {
+      "from": "order-service",
+      "to": "email-notifier",
+      "kind": "dependency",
+      "label": "sendReceipt(order)"
+    },
+    { "from": "order-service", "to": "order", "kind": "dependency", "label": "creates" },
+    {
+      "from": "order",
+      "to": "order-line",
+      "kind": "composition",
+      "label": "1..*",
+      "fromMultiplicity": "1",
+      "toMultiplicity": "1..*"
+    }
+  ],
+  "packages": [
+    {
+      "id": "commerce",
+      "label": "module: commerce",
+      "classes": ["order-service", "order", "order-line", "inventory-repository"]
+    },
+    {
+      "id": "payments",
+      "label": "module: payments",
+      "classes": ["payment-provider", "payment-gateway", "stripe-gateway"]
+    }
+  ]
+}

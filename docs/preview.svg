@@ -1,0 +1,570 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg class="diagram" data-uml="canvas" data-uid="preview" xmlns="http://www.w3.org/2000/svg" viewBox="-24 -24 2637 909" width="2637" height="909" role="img" aria-label="Модуль оплаты — диаграмма классов">
+<rect x="-24" y="-24" width="2637" height="909" fill="#0e1116"/>
+  <style>
+svg {
+  --bg: #0e1116;
+  --panel: #171b22;
+  --ink: #e5e7eb;
+  --ink-soft: #c3c9d4;
+  --ink-mute: #8b93a3;
+  --line: #2c333f;
+  --accent: #60a5fa;
+  --accent-soft: #1e3a5f;
+  --pkg: #5b6675;
+  --shadow: 0 1px 2px rgba(0, 0, 0, 0.5), 0 8px 24px rgba(0, 0, 0, 0.35);
+  --class-alpha: 26%;
+  --line-scale: 1;
+  color-scheme: dark;
+}
+svg[data-theme="light"] {
+  --bg: #f6f7f9;
+  --panel: #ffffff;
+  --ink: #111827;
+  --ink-soft: #4b5563;
+  --ink-mute: #6b7280;
+  --line: #c3c9d4;
+  --accent: #2563eb;
+  --accent-soft: #dbeafe;
+  --pkg: #94a3b8;
+  --shadow: 0 1px 2px rgba(16, 24, 40, 0.06), 0 8px 24px rgba(16, 24, 40, 0.06);
+  color-scheme: light;
+}
+svg *, svg *::before, svg *::after { box-sizing: border-box; }
+svg [hidden] { display: none !important; }
+.uml-page { margin: 0; height: 100%; overflow: hidden; }
+svg {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "Segoe UI", "Inter", system-ui, -apple-system, sans-serif;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  user-select: none;
+  -webkit-user-select: none;
+  height: 100%;
+  position: relative;
+}
+.bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 9px 16px;
+  background: var(--panel);
+  border-bottom: 1px solid var(--line);
+  box-shadow: var(--shadow);
+  z-index: 2;
+}
+.title { font-size: 15px; font-weight: 650; letter-spacing: 0.1px; white-space: nowrap; }
+.meta { font-size: 12px; color: var(--ink-mute); white-space: nowrap; }
+.spacer { flex: 1; }
+.panel-dock {
+  position: absolute;
+  right: 14px;
+  bottom: 12px;
+  z-index: 7;
+  display: grid;
+  gap: 8px;
+  justify-items: end;
+}
+.panel-toggle[aria-expanded="true"] { border-color: var(--accent); color: var(--accent); }
+.panel {
+  display: grid;
+  gap: 10px;
+  width: min(300px, 78vw);
+  max-height: 60vh;
+  overflow: auto;
+  padding: 12px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--panel);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, .45);
+}
+.panel-row { display: grid; gap: 7px; }
+.panel .slider { display: flex; justify-content: space-between; gap: 10px; font-size: 12.5px; color: var(--ink-soft); }
+.panel .slider input { flex: 1; width: auto; }
+/* Short actions sit side by side; labels that need the room take a whole row. */
+.panel-pairs { grid-template-columns: 1fr 1fr; gap: 6px; }
+.panel-wide { gap: 6px; }
+.panel-pairs button, .panel-wide button { width: 100%; }
+.search {
+  width: 190px;
+  padding: 7px 11px;
+  border-radius: 8px;
+  border: 1px solid var(--line);
+  background: var(--bg);
+  color: var(--ink);
+  font-size: 13px;
+  outline: none;
+}
+.search:focus { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); }
+button {
+  padding: 7px 11px;
+  border-radius: 8px;
+  border: 1px solid var(--line);
+  background: var(--bg);
+  color: var(--ink-soft);
+  font-size: 12.5px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+button:hover { border-color: var(--accent); color: var(--accent); }
+.slider {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: var(--ink-mute);
+  white-space: nowrap;
+}
+.slider input { width: 110px; accent-color: var(--accent); }
+.wrap { position: relative; flex: 1; overflow: hidden; cursor: grab; }
+.wrap.dragging { cursor: grabbing; }
+.diagram { position: absolute; top: 0; left: 0; transform-origin: 0 0; overflow: visible; }
+.legend {
+  position: absolute;
+  left: 18px;
+  bottom: 12px;
+  max-width: min(360px, calc(100% - 190px));
+  padding: 12px 14px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  box-shadow: var(--shadow);
+  color: var(--ink-soft);
+  font-size: 12px;
+  line-height: 1.35;
+}
+.legend-hint { margin-top: 9px; padding-top: 9px; border-top: 1px solid var(--line); color: var(--ink-mute); font-size: 11.5px; line-height: 1.45; }
+.legend h4 { margin: 0 0 8px; font-size: 12px; letter-spacing: .3px; color: var(--ink); }
+.legend-row { display: flex; align-items: center; gap: 9px; margin: 7px 0; }
+.legend-row svg { flex: 0 0 auto; }
+.legend-note { margin-top: 9px; color: var(--ink-mute); font-size: 11px; }
+.package-frame {
+  fill: color-mix(in srgb, var(--pkg) 6%, transparent);
+  stroke: var(--pkg);
+  stroke-width: 1;
+  stroke-dasharray: 5 5;
+  opacity: .55;
+  pointer-events: none;
+}
+.package-hit {
+  fill: none;
+  stroke: transparent;
+  stroke-width: 18;
+  pointer-events: stroke;
+  cursor: move;
+}
+.package-label { cursor: move; }
+.package-label rect { fill: var(--panel); stroke: var(--pkg); stroke-width: 1; }
+.package-label text { fill: var(--ink-mute); font-size: 11px; font-weight: 600; letter-spacing: .3px; }
+.node { cursor: move; transition: opacity .15s ease; }
+.node .box {
+  fill: color-mix(in srgb, var(--c) var(--class-alpha), var(--panel));
+  stroke: var(--c);
+  stroke-width: 1.6;
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, .25));
+  transition: stroke .15s ease, opacity .15s ease, stroke-width .15s ease;
+}
+.node .body {
+  fill: color-mix(in srgb, var(--c) 7%, var(--panel));
+  stroke: var(--line);
+  stroke-width: 1;
+}
+.node .stripe { fill: var(--c); }
+.node .stereo { fill: color-mix(in srgb, var(--c) 72%, var(--ink)); font-size: 11px; letter-spacing: .2px; }
+.node .name { fill: var(--ink); font-size: 15px; font-weight: 650; }
+.node .sep { stroke: color-mix(in srgb, var(--c) 40%, var(--line)); stroke-width: 1; }
+.node .section { fill: color-mix(in srgb, hsl(var(--h) 58% 60%) 60%, var(--ink)); font-size: 10.5px; font-weight: 700; text-transform: uppercase; letter-spacing: .6px; }
+.node .member { fill: color-mix(in srgb, hsl(var(--h) 62% 65%) var(--mix, 60%), var(--ink)); font-size: 12px; font-family: "JetBrains Mono", "Cascadia Code", ui-monospace, monospace; }
+.member-row { cursor: pointer; }
+.member-row .member-bg { fill: color-mix(in srgb, var(--c) 22%, transparent); opacity: 0; transition: opacity .12s ease; }
+.member-row:hover .member-bg, .member-row.hl .member-bg { opacity: 1; }
+.node .expander-bg { fill: color-mix(in srgb, var(--c) 10%, transparent); }
+.node .chev { fill: none; stroke: color-mix(in srgb, var(--c) 70%, var(--ink)); stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.node .expander:hover .chev { stroke: var(--ink); }
+.node.st-abstract .name { font-style: italic; }
+.edge .line { fill: none; stroke-width: calc(1.8px * var(--line-scale)); stroke-linejoin: round; stroke-linecap: round; }
+.edge-hit { fill: none; stroke: transparent; stroke-width: 16; pointer-events: stroke; cursor: pointer; }
+.edge.frozen .line { stroke-width: calc(3.4px * var(--line-scale)); }
+.edge.frozen .head-tri, .edge.frozen .head-open { stroke-width: calc(2px * var(--line-scale)); }
+svg.has-freeze .edge:not(.frozen) { opacity: .12; }
+svg.has-freeze .node:not(.frozen-endpoint) { opacity: .2; }
+svg.has-freeze .package { opacity: .3; }
+svg.has-freeze .node.frozen-endpoint .box { stroke-width: 2.2; }
+.edge.k-dependency .line, .edge.k-realization .line { stroke-dasharray: 6 5; }
+.head-tri { fill: var(--panel); stroke: var(--head); stroke-width: calc(1.5px * var(--line-scale)); stroke-linejoin: round; }
+.head-open { fill: none; stroke: var(--head); stroke-width: calc(1.8px * var(--line-scale)); stroke-linecap: round; stroke-linejoin: round; }
+.pin { stroke: var(--panel); stroke-width: calc(1.6px * var(--line-scale)); }
+.zonepin { fill: var(--panel); stroke: var(--ink-mute); stroke-width: calc(1.5px * var(--line-scale)); }
+.pin-stem { stroke-width: calc(2px * var(--line-scale)); stroke-linecap: round; opacity: .85; }
+.pin-group.off { display: none; }
+.pin.off { display: none; }
+.pins { pointer-events: none; }
+.edge-label rect { fill: var(--panel); stroke: var(--line); stroke-width: .8; }
+.edge-label text { fill: var(--ink-soft); font-size: 11px; font-family: "JetBrains Mono", ui-monospace, monospace; }
+.node.dim { opacity: .2; }
+.edge.dim { opacity: .1; }
+.edge.hl .line { stroke-width: calc(3px * var(--line-scale)); filter: brightness(1.35); }
+.node.hl .box { stroke-width: 2.8; }
+.node.hit .box { stroke-width: 3; }
+</style><defs><linearGradient id="eg-preview-e0" gradientUnits="userSpaceOnUse" x1="1791" y1="589" x2="1402" y2="301">
+      <stop offset="0%" stop-color="hsl(105.05 68% 56%)"/>
+      <stop offset="16%" stop-color="hsl(105.05 68% 56%)"/>
+      <stop offset="84%" stop-color="hsl(327.54 68% 56%)"/>
+      <stop offset="100%" stop-color="hsl(327.54 68% 56%)"/>
+    </linearGradient><linearGradient id="eg-preview-e1" gradientUnits="userSpaceOnUse" x1="1791" y1="301" x2="1402" y2="112">
+      <stop offset="0%" stop-color="hsl(327.54 68% 56%)"/>
+      <stop offset="16%" stop-color="hsl(327.54 68% 56%)"/>
+      <stop offset="84%" stop-color="hsl(190.03 68% 56%)"/>
+      <stop offset="100%" stop-color="hsl(190.03 68% 56%)"/>
+    </linearGradient><linearGradient id="eg-preview-e2" gradientUnits="userSpaceOnUse" x1="1791" y1="589" x2="1402" y2="112">
+      <stop offset="0%" stop-color="hsl(105.05 68% 56%)"/>
+      <stop offset="16%" stop-color="hsl(105.05 68% 56%)"/>
+      <stop offset="84%" stop-color="hsl(190.03 68% 56%)"/>
+      <stop offset="100%" stop-color="hsl(190.03 68% 56%)"/>
+    </linearGradient><linearGradient id="eg-preview-e3" gradientUnits="userSpaceOnUse" x1="838" y1="112" x2="1402" y2="112">
+      <stop offset="0%" stop-color="hsl(0 68% 56%)"/>
+      <stop offset="16%" stop-color="hsl(0 68% 56%)"/>
+      <stop offset="84%" stop-color="hsl(190.03 68% 56%)"/>
+      <stop offset="100%" stop-color="hsl(190.03 68% 56%)"/>
+    </linearGradient><linearGradient id="eg-preview-e4" gradientUnits="userSpaceOnUse" x1="838" y1="112" x2="168" y2="417">
+      <stop offset="0%" stop-color="hsl(0 68% 56%)"/>
+      <stop offset="16%" stop-color="hsl(0 68% 56%)"/>
+      <stop offset="84%" stop-color="hsl(52.52 68% 56%)"/>
+      <stop offset="100%" stop-color="hsl(52.52 68% 56%)"/>
+    </linearGradient><linearGradient id="eg-preview-e5" gradientUnits="userSpaceOnUse" x1="838" y1="112" x2="2129" y2="112">
+      <stop offset="0%" stop-color="hsl(0 68% 56%)"/>
+      <stop offset="16%" stop-color="hsl(0 68% 56%)"/>
+      <stop offset="84%" stop-color="hsl(242.56 68% 56%)"/>
+      <stop offset="100%" stop-color="hsl(242.56 68% 56%)"/>
+    </linearGradient><linearGradient id="eg-preview-e6" gradientUnits="userSpaceOnUse" x1="838" y1="112" x2="699" y2="417">
+      <stop offset="0%" stop-color="hsl(0 62% 58%)"/>
+      <stop offset="16%" stop-color="hsl(0 62% 58%)"/>
+      <stop offset="84%" stop-color="hsl(137.51 68% 56%)"/>
+      <stop offset="100%" stop-color="hsl(137.51 68% 56%)"/>
+    </linearGradient><linearGradient id="eg-preview-e7" gradientUnits="userSpaceOnUse" x1="1064" y1="417" x2="531" y2="705">
+      <stop offset="0%" stop-color="hsl(137.51 62% 63%)"/>
+      <stop offset="16%" stop-color="hsl(137.51 62% 63%)"/>
+      <stop offset="84%" stop-color="hsl(275.02 68% 56%)"/>
+      <stop offset="100%" stop-color="hsl(275.02 68% 56%)"/>
+    </linearGradient></defs>
+  <g class="layer-packages"><g class="package" data-package="commerce" data-members="order-service,order,order-line,inventory-repository">
+    <rect class="package-frame" x="142" y="50" width="948" height="725" rx="12"/>
+    <rect class="package-hit" x="142" y="50" width="948" height="725" rx="12"/>
+    <g class="package-label" transform="translate(156,38)">
+      <rect width="139" height="24" rx="7"/>
+      <text x="10" y="16">module: commerce</text>
+    </g>
+  </g><g class="package" data-package="payments" data-members="payment-provider,payment-gateway,stripe-gateway">
+    <rect class="package-frame" x="1376" y="50" width="441" height="609" rx="12"/>
+    <rect class="package-hit" x="1376" y="50" width="441" height="609" rx="12"/>
+    <g class="package-label" transform="translate(1390,38)">
+      <rect width="139" height="24" rx="7"/>
+      <text x="10" y="16">module: payments</text>
+    </g>
+  </g></g>
+  <g class="layer-edges"><g class="edge k-inheritance" data-edge="e0" data-merged="e0" data-from="stripe-gateway" data-to="payment-gateway" data-kind="inheritance" data-dir="side" data-ordinal="0" data-tip="1402,301" data-from-member="" data-to-member="" data-from-anchor="" data-to-anchor="" data-points="1791,589 1813,589 1813,257 1380,257 1380,301 1387,301">
+    <path class="edge-hit" d="M 1791 589 L 1813 589 L 1813 257 L 1380 257 L 1380 301 L 1387 301"/>
+    <path class="line" d="M 1791 589 L 1813 589 L 1813 257 L 1380 257 L 1380 301 L 1387 301" stroke="url(#eg-preview-e0)"/>
+    
+    
+    <g class="head-wrap" transform="translate(1402,301) rotate(0)" style="--head:hsl(327.54 68% 56%)"><polygon class="head-tri" points="0,0 -15,8 -15,-8"/></g>
+    
+  </g><g class="edge k-realization" data-edge="e1" data-merged="e1" data-from="payment-gateway" data-to="payment-provider" data-kind="realization" data-dir="side" data-ordinal="1" data-tip="1402,112" data-from-member="" data-to-member="" data-from-anchor="" data-to-anchor="" data-points="1791,301 1813,301 1813,68 1380,68 1380,112 1387,112">
+    <path class="edge-hit" d="M 1791 301 L 1813 301 L 1813 68 L 1380 68 L 1380 112 L 1387 112"/>
+    <path class="line" d="M 1791 301 L 1813 301 L 1813 68 L 1380 68 L 1380 112 L 1387 112" stroke="url(#eg-preview-e1)"/>
+    
+    
+    <g class="head-wrap" transform="translate(1402,112) rotate(0)" style="--head:hsl(190.03 68% 56%)"><polygon class="head-tri" points="0,0 -15,8 -15,-8"/></g>
+    
+  </g><g class="edge k-realization" data-edge="e2" data-merged="e2" data-from="stripe-gateway" data-to="payment-provider" data-kind="realization" data-dir="side" data-ordinal="2" data-tip="1402,112" data-from-member="" data-to-member="" data-from-anchor="" data-to-anchor="" data-points="1791,589 1813,589 1813,68 1380,68 1380,112 1387,112">
+    <path class="edge-hit" d="M 1791 589 L 1813 589 L 1813 68 L 1380 68 L 1380 112 L 1387 112"/>
+    <path class="line" d="M 1791 589 L 1813 589 L 1813 68 L 1380 68 L 1380 112 L 1387 112" stroke="url(#eg-preview-e2)"/>
+    
+    
+    <g class="head-wrap" transform="translate(1402,112) rotate(0)" style="--head:hsl(190.03 68% 56%)"><polygon class="head-tri" points="0,0 -15,8 -15,-8"/></g>
+    
+  </g><g class="edge k-dependency" data-edge="e3" data-merged="e3" data-from="order-service" data-to="payment-provider" data-kind="dependency" data-dir="side" data-ordinal="3" data-tip="1402,112" data-from-member="" data-to-member="" data-from-anchor="" data-to-anchor="" data-points="838,112 1090,112 1233,112 1376,112 1389,112">
+    <path class="edge-hit" d="M 838 112 L 1090 112 L 1233 112 L 1376 112 L 1389 112"/>
+    <path class="line" d="M 838 112 L 1090 112 L 1233 112 L 1376 112 L 1389 112" stroke="url(#eg-preview-e3)"/>
+    <circle class="zonepin" data-role="exit" cx="1090" cy="112" r="3.5"/>
+    <circle class="zonepin" data-role="entry" cx="1376" cy="112" r="3.5"/>
+    <g class="head-wrap" transform="translate(1402,112) rotate(0)" style="--head:hsl(190.03 68% 56%)"><path class="head-open" d="M -13 -6 L 0 0 L -13 6"/></g>
+    <g class="edge-label" transform="translate(887.5,89.5)">
+    <rect width="153" height="19" rx="6"/>
+    <text x="76.5" y="13" text-anchor="middle">charge(card, amount)</text>
+  </g>
+  </g><g class="edge k-dependency" data-edge="e4" data-merged="e4" data-from="order-service" data-to="inventory-repository" data-kind="dependency" data-dir="side" data-ordinal="4" data-tip="168,417" data-from-member="" data-to-member="" data-from-anchor="" data-to-anchor="" data-points="838,112 860,112 860,481 146,481 146,417 155,417">
+    <path class="edge-hit" d="M 838 112 L 860 112 L 860 481 L 146 481 L 146 417 L 155 417"/>
+    <path class="line" d="M 838 112 L 860 112 L 860 481 L 146 481 L 146 417 L 155 417" stroke="url(#eg-preview-e4)"/>
+    
+    
+    <g class="head-wrap" transform="translate(168,417) rotate(0)" style="--head:hsl(52.52 68% 56%)"><path class="head-open" d="M -13 -6 L 0 0 L -13 6"/></g>
+    <g class="edge-label" transform="translate(437,458.5)">
+    <rect width="132" height="19" rx="6"/>
+    <text x="66" y="13" text-anchor="middle">reserve(sku, qty)</text>
+  </g>
+  </g><g class="edge k-dependency" data-edge="e5" data-merged="e5" data-from="order-service" data-to="email-notifier" data-kind="dependency" data-dir="side" data-ordinal="5" data-tip="2129,112" data-from-member="" data-to-member="" data-from-anchor="" data-to-anchor="" data-points="838,112 2116,112">
+    <path class="edge-hit" d="M 838 112 L 2116 112"/>
+    <path class="line" d="M 838 112 L 2116 112" stroke="url(#eg-preview-e5)"/>
+    
+    
+    <g class="head-wrap" transform="translate(2129,112) rotate(0)" style="--head:hsl(242.56 68% 56%)"><path class="head-open" d="M -13 -6 L 0 0 L -13 6"/></g>
+    <g class="edge-label" transform="translate(1407.5,89.5)">
+    <rect width="139" height="19" rx="6"/>
+    <text x="69.5" y="13" text-anchor="middle">sendReceipt(order)</text>
+  </g>
+  </g><g class="edge k-dependency" data-edge="e6" data-merged="e6" data-from="order-service" data-to="order" data-kind="dependency" data-dir="side" data-ordinal="6" data-tip="699,417" data-from-member="0" data-to-member="" data-from-anchor="99.5" data-to-anchor="" data-points="838,112 860,112 860,481 677,481 677,417 686,417">
+    <path class="edge-hit" d="M 838 112 L 860 112 L 860 481 L 677 481 L 677 417 L 686 417"/>
+    <path class="line" d="M 838 112 L 860 112 L 860 481 L 677 481 L 677 417 L 686 417" stroke="url(#eg-preview-e6)"/>
+    
+    
+    <g class="head-wrap" transform="translate(699,417) rotate(0)" style="--head:hsl(137.51 68% 56%)"><path class="head-open" d="M -13 -6 L 0 0 L -13 6"/></g>
+    <g class="edge-label" transform="translate(841,301.76)">
+    <rect width="64" height="19" rx="6"/>
+    <text x="32" y="13" text-anchor="middle">creates</text>
+  </g>
+  </g><g class="edge k-composition" data-edge="e7" data-merged="e7" data-from="order" data-to="order-line" data-kind="composition" data-dir="side" data-ordinal="7" data-tip="531,705" data-from-member="1" data-to-member="" data-from-anchor="116.5" data-to-anchor="" data-points="1064,417 1086,417 1086,769 509,769 509,705 518,705">
+    <path class="edge-hit" d="M 1064 417 L 1086 417 L 1086 769 L 509 769 L 509 705 L 518 705"/>
+    <path class="line" d="M 1064 417 L 1086 417 L 1086 769 L 509 769 L 509 705 L 518 705" stroke="url(#eg-preview-e7)"/>
+    
+    
+    <g class="head-wrap" transform="translate(531,705) rotate(0)" style="--head:hsl(275.02 68% 56%)"><path class="head-open" d="M -13 -6 L 0 0 L -13 6"/></g>
+    <g class="edge-label" transform="translate(775.5,746.5)">
+    <rect width="44" height="19" rx="6"/>
+    <text x="22" y="13" text-anchor="middle">1..*</text>
+  </g>
+  </g></g>
+  <g class="layer-nodes"><g class="node st-class" data-node="order-service" data-name="OrderService" data-pkg="commerce" data-expanded="false" data-neighbors="email-notifier,inventory-repository,order,payment-provider" data-expand-delta="173" data-has-members="1" data-x="394" data-y="84" data-orig-x="394" data-orig-y="84" data-w="444" data-h="76" style="--h:0; --c:hsl(0 68% 56%)" transform="translate(394,84)" role="group" aria-label="OrderService">
+    <rect class="box" width="444" height="76" rx="10"/>
+    <rect class="body" x="1" y="56" width="442" height="173" rx="8" hidden/>
+    <rect class="stripe" width="5" height="76" rx="2.5"/>
+    
+    <text class="name" x="18" y="36">OrderService</text>
+    <g class="members" transform="translate(0,56)" hidden><g transform="translate(0,10)" data-member-section="fields">
+      <line class="sep" x1="0" y1="0" x2="444" y2="0"/>
+      <text class="section" x="14" y="17">поля</text>
+      <g class="member-row" data-member="0">
+          <rect class="member-bg" x="1" y="23" width="442" height="17"/>
+          <text class="member" x="26" y="37" style="--mix:48%">- repo: OrderRepository</text>
+        </g><g class="member-row" data-member="1">
+          <rect class="member-bg" x="1" y="40" width="442" height="17"/>
+          <text class="member" x="26" y="54" style="--mix:60%">- clock: Clock</text>
+        </g>
+    </g><g transform="translate(0,68)" data-member-section="constructors">
+      <line class="sep" x1="0" y1="0" x2="444" y2="0"/>
+      <text class="section" x="14" y="17">конструкторы</text>
+      <g class="member-row" data-member="2">
+          <rect class="member-bg" x="1" y="23" width="442" height="17"/>
+          <text class="member" x="26" y="37" style="--mix:72%">+ OrderService(repo: OrderRepository, clock: Clock)</text>
+        </g>
+    </g><g transform="translate(0,109)" data-member-section="methods">
+      <line class="sep" x1="0" y1="0" x2="444" y2="0"/>
+      <text class="section" x="14" y="17">методы</text>
+      <g class="member-row" data-member="3">
+          <rect class="member-bg" x="1" y="23" width="442" height="17"/>
+          <text class="member" x="26" y="37" style="--mix:84%">+ place(order: Order): Receipt</text>
+        </g><g class="member-row" data-member="4">
+          <rect class="member-bg" x="1" y="40" width="442" height="17"/>
+          <text class="member" x="26" y="54" style="--mix:48%">+ cancel(id: string): void</text>
+        </g>
+    </g></g>
+    <g class="expander" data-expand-toggle role="button" tabindex="0" aria-expanded="false" transform="translate(0,56)">
+    <rect class="expander-bg" width="444" height="20" rx="0"/>
+    <path class="chev" d="M 216 8 L 222 13 L 228 8"/>
+  </g>
+    <g class="pins" hidden><g class="pin-group" data-node="order-service" data-member="0" data-side="left">
+        <line class="pin-stem" x1="1" y1="99.5" x2="12" y2="99.5" stroke="hsl(0 62% 58%)"/>
+        <circle class="pin" cx="0" cy="99.5" r="4" fill="hsl(0 62% 58%)"/>
+      </g>
+      <g class="pin-group" data-node="order-service" data-member="0" data-side="right">
+        <line class="pin-stem" x1="443" y1="99.5" x2="432" y2="99.5" stroke="hsl(0 62% 58%)"/>
+        <circle class="pin" cx="444" cy="99.5" r="4" fill="hsl(0 62% 58%)"/>
+      </g></g>
+  </g><g class="node st-class" data-node="order" data-name="Order" data-pkg="commerce" data-expanded="false" data-neighbors="order-line,order-service" data-expand-delta="156" data-has-members="1" data-x="699" data-y="389" data-orig-x="699" data-orig-y="389" data-w="365" data-h="76" style="--h:137.51; --c:hsl(137.51 68% 56%)" transform="translate(699,389)" role="group" aria-label="Order">
+    <rect class="box" width="365" height="76" rx="10"/>
+    <rect class="body" x="1" y="56" width="363" height="156" rx="8" hidden/>
+    <rect class="stripe" width="5" height="76" rx="2.5"/>
+    
+    <text class="name" x="18" y="36">Order</text>
+    <g class="members" transform="translate(0,56)" hidden><g transform="translate(0,10)" data-member-section="fields">
+      <line class="sep" x1="0" y1="0" x2="365" y2="0"/>
+      <text class="section" x="14" y="17">поля</text>
+      <g class="member-row" data-member="0">
+          <rect class="member-bg" x="1" y="23" width="363" height="17"/>
+          <text class="member" x="26" y="37" style="--mix:48%">- id: string</text>
+        </g><g class="member-row" data-member="1">
+          <rect class="member-bg" x="1" y="40" width="363" height="17"/>
+          <text class="member" x="26" y="54" style="--mix:60%">- lines: OrderLine[]</text>
+        </g>
+    </g><g transform="translate(0,68)" data-member-section="properties">
+      <line class="sep" x1="0" y1="0" x2="365" y2="0"/>
+      <text class="section" x="14" y="17">свойства</text>
+      <g class="member-row" data-member="2">
+          <rect class="member-bg" x="1" y="23" width="363" height="17"/>
+          <text class="member" x="26" y="37" style="--mix:72%">+ Total: Money { get; private set; }</text>
+        </g>
+    </g><g transform="translate(0,109)" data-member-section="methods">
+      <line class="sep" x1="0" y1="0" x2="365" y2="0"/>
+      <text class="section" x="14" y="17">методы</text>
+      <g class="member-row" data-member="3">
+          <rect class="member-bg" x="1" y="23" width="363" height="17"/>
+          <text class="member" x="26" y="37" style="--mix:84%">+ addLine(sku: string, qty: number): void</text>
+        </g>
+    </g></g>
+    <g class="expander" data-expand-toggle role="button" tabindex="0" aria-expanded="false" transform="translate(0,56)">
+    <rect class="expander-bg" width="365" height="20" rx="0"/>
+    <path class="chev" d="M 176.5 8 L 182.5 13 L 188.5 8"/>
+  </g>
+    <g class="pins" hidden><g class="pin-group" data-node="order" data-member="1" data-side="left">
+        <line class="pin-stem" x1="1" y1="116.5" x2="12" y2="116.5" stroke="hsl(137.51 62% 63%)"/>
+        <circle class="pin" cx="0" cy="116.5" r="4" fill="hsl(137.51 62% 63%)"/>
+      </g>
+      <g class="pin-group" data-node="order" data-member="1" data-side="right">
+        <line class="pin-stem" x1="364" y1="116.5" x2="353" y2="116.5" stroke="hsl(137.51 62% 63%)"/>
+        <circle class="pin" cx="365" cy="116.5" r="4" fill="hsl(137.51 62% 63%)"/>
+      </g></g>
+  </g><g class="node st-class" data-node="order-line" data-name="OrderLine" data-pkg="commerce" data-expanded="false" data-neighbors="order" data-expand-delta="74" data-has-members="1" data-x="531" data-y="677" data-orig-x="531" data-orig-y="677" data-w="170" data-h="76" style="--h:275.02; --c:hsl(275.02 68% 56%)" transform="translate(531,677)" role="group" aria-label="OrderLine">
+    <rect class="box" width="170" height="76" rx="10"/>
+    <rect class="body" x="1" y="56" width="168" height="74" rx="8" hidden/>
+    <rect class="stripe" width="5" height="76" rx="2.5"/>
+    
+    <text class="name" x="18" y="36">OrderLine</text>
+    <g class="members" transform="translate(0,56)" hidden><g transform="translate(0,10)" data-member-section="fields">
+      <line class="sep" x1="0" y1="0" x2="170" y2="0"/>
+      <text class="section" x="14" y="17">поля</text>
+      <g class="member-row" data-member="0">
+          <rect class="member-bg" x="1" y="23" width="168" height="17"/>
+          <text class="member" x="26" y="37" style="--mix:48%">- sku: string</text>
+        </g><g class="member-row" data-member="1">
+          <rect class="member-bg" x="1" y="40" width="168" height="17"/>
+          <text class="member" x="26" y="54" style="--mix:60%">- qty: number</text>
+        </g>
+    </g></g>
+    <g class="expander" data-expand-toggle role="button" tabindex="0" aria-expanded="false" transform="translate(0,56)">
+    <rect class="expander-bg" width="170" height="20" rx="0"/>
+    <path class="chev" d="M 79 8 L 85 13 L 91 8"/>
+  </g>
+    
+  </g><g class="node st-class" data-node="inventory-repository" data-name="InventoryRepository" data-pkg="commerce" data-expanded="false" data-neighbors="order-service" data-expand-delta="57" data-has-members="1" data-x="168" data-y="389" data-orig-x="168" data-orig-y="389" data-w="421" data-h="76" style="--h:52.52; --c:hsl(52.52 68% 56%)" transform="translate(168,389)" role="group" aria-label="InventoryRepository">
+    <rect class="box" width="421" height="76" rx="10"/>
+    <rect class="body" x="1" y="56" width="419" height="57" rx="8" hidden/>
+    <rect class="stripe" width="5" height="76" rx="2.5"/>
+    
+    <text class="name" x="18" y="36">InventoryRepository</text>
+    <g class="members" transform="translate(0,56)" hidden><g transform="translate(0,10)" data-member-section="methods">
+      <line class="sep" x1="0" y1="0" x2="421" y2="0"/>
+      <text class="section" x="14" y="17">методы</text>
+      <g class="member-row" data-member="0">
+          <rect class="member-bg" x="1" y="23" width="419" height="17"/>
+          <text class="member" x="26" y="37" style="--mix:48%">+ reserve(sku: string, qty: number): Reservation</text>
+        </g>
+    </g></g>
+    <g class="expander" data-expand-toggle role="button" tabindex="0" aria-expanded="false" transform="translate(0,56)">
+    <rect class="expander-bg" width="421" height="20" rx="0"/>
+    <path class="chev" d="M 204.5 8 L 210.5 13 L 216.5 8"/>
+  </g>
+    
+  </g><g class="node st-interface" data-node="payment-provider" data-name="PaymentProvider" data-pkg="payments" data-expanded="false" data-neighbors="order-service,payment-gateway,stripe-gateway" data-expand-delta="57" data-has-members="1" data-x="1402" data-y="84" data-orig-x="1402" data-orig-y="84" data-w="389" data-h="76" style="--h:190.03; --c:hsl(190.03 68% 56%)" transform="translate(1402,84)" role="group" aria-label="PaymentProvider">
+    <rect class="box" width="389" height="76" rx="10"/>
+    <rect class="body" x="1" y="56" width="387" height="57" rx="8" hidden/>
+    <rect class="stripe" width="5" height="76" rx="2.5"/>
+    <text class="stereo" x="18" y="22">«interface»</text>
+    <text class="name" x="18" y="45">PaymentProvider</text>
+    <g class="members" transform="translate(0,56)" hidden><g transform="translate(0,10)" data-member-section="methods">
+      <line class="sep" x1="0" y1="0" x2="389" y2="0"/>
+      <text class="section" x="14" y="17">методы</text>
+      <g class="member-row" data-member="0">
+          <rect class="member-bg" x="1" y="23" width="387" height="17"/>
+          <text class="member" x="26" y="37" style="--mix:48%">+ charge(card: Card, amount: Money): Receipt</text>
+        </g>
+    </g></g>
+    <g class="expander" data-expand-toggle role="button" tabindex="0" aria-expanded="false" transform="translate(0,56)">
+    <rect class="expander-bg" width="389" height="20" rx="0"/>
+    <path class="chev" d="M 188.5 8 L 194.5 13 L 200.5 8"/>
+  </g>
+    
+  </g><g class="node st-abstract" data-node="payment-gateway" data-name="PaymentGateway" data-pkg="payments" data-expanded="false" data-neighbors="payment-provider,stripe-gateway" data-expand-delta="156" data-has-members="1" data-x="1402" data-y="273" data-orig-x="1402" data-orig-y="273" data-w="389" data-h="76" style="--h:327.54; --c:hsl(327.54 68% 56%)" transform="translate(1402,273)" role="group" aria-label="PaymentGateway">
+    <rect class="box" width="389" height="76" rx="10"/>
+    <rect class="body" x="1" y="56" width="387" height="156" rx="8" hidden/>
+    <rect class="stripe" width="5" height="76" rx="2.5"/>
+    <text class="stereo" x="18" y="22">«abstract»</text>
+    <text class="name" x="18" y="45">PaymentGateway</text>
+    <g class="members" transform="translate(0,56)" hidden><g transform="translate(0,10)" data-member-section="fields">
+      <line class="sep" x1="0" y1="0" x2="389" y2="0"/>
+      <text class="section" x="14" y="17">поля</text>
+      <g class="member-row" data-member="0">
+          <rect class="member-bg" x="1" y="23" width="387" height="17"/>
+          <text class="member" x="26" y="37" style="--mix:48%"># http: HttpClient</text>
+        </g>
+    </g><g transform="translate(0,51)" data-member-section="constructors">
+      <line class="sep" x1="0" y1="0" x2="389" y2="0"/>
+      <text class="section" x="14" y="17">конструкторы</text>
+      <g class="member-row" data-member="1">
+          <rect class="member-bg" x="1" y="23" width="387" height="17"/>
+          <text class="member" x="26" y="37" style="--mix:60%"># PaymentGateway(http: HttpClient)</text>
+        </g>
+    </g><g transform="translate(0,92)" data-member-section="methods">
+      <line class="sep" x1="0" y1="0" x2="389" y2="0"/>
+      <text class="section" x="14" y="17">методы</text>
+      <g class="member-row" data-member="2">
+          <rect class="member-bg" x="1" y="23" width="387" height="17"/>
+          <text class="member" x="26" y="37" style="--mix:72%">+ charge(card: Card, amount: Money): Receipt</text>
+        </g><g class="member-row" data-member="3">
+          <rect class="member-bg" x="1" y="40" width="387" height="17"/>
+          <text class="member" x="26" y="54" style="--mix:84%"># authorize(card: Card): Token</text>
+        </g>
+    </g></g>
+    <g class="expander" data-expand-toggle role="button" tabindex="0" aria-expanded="false" transform="translate(0,56)">
+    <rect class="expander-bg" width="389" height="20" rx="0"/>
+    <path class="chev" d="M 188.5 8 L 194.5 13 L 200.5 8"/>
+  </g>
+    
+  </g><g class="node st-class" data-node="stripe-gateway" data-name="StripeGateway" data-pkg="payments" data-expanded="false" data-neighbors="payment-gateway,payment-provider" data-expand-delta="98" data-has-members="1" data-x="1402" data-y="561" data-orig-x="1402" data-orig-y="561" data-w="389" data-h="76" style="--h:105.05; --c:hsl(105.05 68% 56%)" transform="translate(1402,561)" role="group" aria-label="StripeGateway">
+    <rect class="box" width="389" height="76" rx="10"/>
+    <rect class="body" x="1" y="56" width="387" height="98" rx="8" hidden/>
+    <rect class="stripe" width="5" height="76" rx="2.5"/>
+    
+    <text class="name" x="18" y="36">StripeGateway</text>
+    <g class="members" transform="translate(0,56)" hidden><g transform="translate(0,10)" data-member-section="constructors">
+      <line class="sep" x1="0" y1="0" x2="389" y2="0"/>
+      <text class="section" x="14" y="17">конструкторы</text>
+      <g class="member-row" data-member="0">
+          <rect class="member-bg" x="1" y="23" width="387" height="17"/>
+          <text class="member" x="26" y="37" style="--mix:48%">+ StripeGateway(apiKey: string)</text>
+        </g>
+    </g><g transform="translate(0,51)" data-member-section="methods">
+      <line class="sep" x1="0" y1="0" x2="389" y2="0"/>
+      <text class="section" x="14" y="17">методы</text>
+      <g class="member-row" data-member="1">
+          <rect class="member-bg" x="1" y="23" width="387" height="17"/>
+          <text class="member" x="26" y="37" style="--mix:60%">+ charge(card: Card, amount: Money): Receipt</text>
+        </g>
+    </g></g>
+    <g class="expander" data-expand-toggle role="button" tabindex="0" aria-expanded="false" transform="translate(0,56)">
+    <rect class="expander-bg" width="389" height="20" rx="0"/>
+    <path class="chev" d="M 188.5 8 L 194.5 13 L 200.5 8"/>
+  </g>
+    
+  </g><g class="node st-class" data-node="email-notifier" data-name="EmailNotifier" data-pkg="" data-expanded="false" data-neighbors="order-service" data-expand-delta="57" data-has-members="1" data-x="2129" data-y="84" data-orig-x="2129" data-orig-y="84" data-w="302" data-h="76" style="--h:242.56; --c:hsl(242.56 68% 56%)" transform="translate(2129,84)" role="group" aria-label="EmailNotifier">
+    <rect class="box" width="302" height="76" rx="10"/>
+    <rect class="body" x="1" y="56" width="300" height="57" rx="8" hidden/>
+    <rect class="stripe" width="5" height="76" rx="2.5"/>
+    
+    <text class="name" x="18" y="36">EmailNotifier</text>
+    <g class="members" transform="translate(0,56)" hidden><g transform="translate(0,10)" data-member-section="methods">
+      <line class="sep" x1="0" y1="0" x2="302" y2="0"/>
+      <text class="section" x="14" y="17">методы</text>
+      <g class="member-row" data-member="0">
+          <rect class="member-bg" x="1" y="23" width="300" height="17"/>
+          <text class="member" x="26" y="37" style="--mix:48%">+ sendReceipt(order: Order): void</text>
+        </g>
+    </g></g>
+    <g class="expander" data-expand-toggle role="button" tabindex="0" aria-expanded="false" transform="translate(0,56)">
+    <rect class="expander-bg" width="302" height="20" rx="0"/>
+    <path class="chev" d="M 145 8 L 151 13 L 157 8"/>
+  </g>
+    
+  </g></g>
+</svg>

@@ -3945,8 +3945,18 @@ function externalFiles(folder) {
   const req =
     typeof require === 'function' ? require : typeof window !== 'undefined' ? window.require : null;
   if (!req) return null;
-  const fs = req('node:fs');
-  const path = req('node:path');
+
+  // On mobile `require` may exist yet refuse Node built-ins, and that throw must
+  // surface as "not supported here", not as a broken command.
+  let fs;
+  let path;
+  try {
+    fs = req('node:fs');
+    path = req('node:path');
+  } catch (error) {
+    return null;
+  }
+  if (!fs || !path) return null;
   const skip = new Set(['bin', 'obj', 'node_modules', '.git', 'Library', 'Temp', 'Logs', '.vs']);
   const files = [];
   const walk = (dir) => {
